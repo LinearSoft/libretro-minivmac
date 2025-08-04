@@ -43,6 +43,7 @@ SOURCES_C +=  \
 	  $(CORE_DIR)/libretro-common/compat/fopen_utf8.c \
 	  $(CORE_DIR)/libretro-common/encodings/encoding_utf.c \
   	  $(CORE_DIR)/libretro-common/file/file_path.c \
+	  $(CORE_DIR)/libretro-common/file/file_path_io.c \
 	  $(CORE_DIR)/libretro-common/file/retro_dirent.c \
 	  $(CORE_DIR)/libretro-common/time/rtime.c \
 	  $(CORE_DIR)/libretro-common/streams/file_stream.c \
