@@ -1,0 +1,56 @@
+root = true
+###################################################################
+#                    Core EditorConfig Options                    #
+###################################################################
+# --------- All files
+[*]
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = false
+max_line_length = 105
+tab_width = 2
+trim_trailing_whitespace = true
+
+[*.{c,cpp,h}]
+indent_size = 3
+
+# --------- XML files
+[*.{xml,xsd}]
+indent_size = tab
+indent_style = tab
+tab_size = 4
+
+# --------- XML project files
+[*.{csproj,jsproj,lsproj,njsproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
+end_of_line = crlf
+indent_size = tab
+indent_style = tab
+tab_size = 4
+
+# --------- XML config files
+[*.{asax,ascx,aspx,axaml,axml,master,paml,resw,resx,skin,xaml,xamlx,xoml}]
+end_of_line = crlf
+indent_size = tab
+indent_style = tab
+tab_size = 4
+
+# --------- Windows OS files
+[*.{adml,admx,ahk,ps1,reg,wsf}]
+end_of_line = crlf
+
+
+###################################################################
+#                        .NET Conventions                         #
+###################################################################
+[*.{cs,csx,cshtml,razor,vb,vbx}]
+###############################
+#    .NET EditorConfig        #
+###############################
+charset = utf-8-bom
+end_of_line = crlf
+indent_size = 4
+# Mircosoft standard is to insert but ReSharper has a bug which continually adds line-feeds
+insert_final_newline = false
+tab_width = 4
+
