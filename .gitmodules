@@ -1,3 +1,7 @@
 [submodule "libretro-common"]
 	path = libretro-common
 	url = https://github.com/libretro/libretro-common
+[submodule "minivmac"]
+	path = minivmac
+	url = https://github.com/minivmac/minivmac.git
+	branch = master
