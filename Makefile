@@ -23,6 +23,7 @@ ifneq (,$(findstring unix,$(platform)))
    TARGET := $(TARGET_NAME)_libretro.so
    fpic := -fPIC
    SHARED := -shared -Wl,--version-script=libretro/link.T -Wl,--no-undefined -fPIC
+   CFLAGS += -DHAVE_DYLIB
 else ifeq ($(platform), osx)
    TARGET := $(TARGET_NAME)_libretro.dylib
    fpic := -fPIC
@@ -40,8 +41,8 @@ else ifeq ($(platform), osx)
 # Platform affix = classic_<ISA>_<µARCH>
 # Help at https://modmyclassic.com/comp
 
-# (armv7 a7, hard point, neon based) ### 
-# NESC, SNESC, C64 mini 
+# (armv7 a7, hard point, neon based) ###
+# NESC, SNESC, C64 mini
 else ifeq ($(platform), classic_armv7_a7)
 	TARGET := $(TARGET_NAME)_libretro.so
 	fpic := -fPIC
@@ -266,7 +267,7 @@ else ifeq ($(platform), windows_msvc2010_x64)
 
 	TARGET := $(TARGET_NAME)_libretro.dll
 	LDFLAGS += -DLL
-	LIBS = 
+	LIBS =
 
 # Windows MSVC 2010 x86
 else ifeq ($(platform), windows_msvc2010_x86)
@@ -294,7 +295,7 @@ else ifeq ($(platform), windows_msvc2010_x86)
 
 	TARGET := $(TARGET_NAME)_libretro.dll
 	LDFLAGS += -DLL
-	LIBS = 
+	LIBS =
 
 # Windows MSVC 2005 x86
 else ifeq ($(platform), windows_msvc2005_x86)
@@ -324,7 +325,7 @@ else ifeq ($(platform), windows_msvc2005_x86)
 	PSS_STYLE :=2
 	LDFLAGS += -DLL
 	CFLAGS += -D_CRT_SECURE_NO_DEPRECATE
-	LIBS = 
+	LIBS =
 
 else
    CC ?= gcc
@@ -357,9 +358,9 @@ CFLAGS += -std=gnu99 \
                          -fno-builtin \
                          -finline-functions
 endif
-LDFLAGS  += -lm 
+LDFLAGS  += -lm
 
-OBJOUT   = -o 
+OBJOUT   = -o
 ifneq (,$(findstring msvc,$(platform)))
 	OBJOUT = -Fo
 endif
@@ -373,7 +374,7 @@ ifneq (,$(findstring msvc,$(platform)))
 else ifeq ($(STATIC_LINKING),1)
 	$(AR) rcs $@ $(OBJECTS)
 else
-	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS) $(LDFLAGS)  
+	$(CC) $(fpic) $(SHARED) $(INCLUDES) -o $@ $(OBJECTS) $(LDFLAGS)
 endif
 
 %.o: %.c

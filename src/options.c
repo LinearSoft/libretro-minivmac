@@ -28,6 +28,8 @@ struct retro_core_option_v2_category option_cats_us[] = {
    { NULL, NULL, NULL },
 };
 
+// !!!!!!!!!!!!!  DoControlModeKey(key); code for switches
+
 struct retro_core_option_v2_definition option_defs_us[] = {
    {
       "retromac_system_model",                    /* key (option name) */

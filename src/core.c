@@ -2,11 +2,10 @@
 
 #include "logging.h"
 #include "options.h"
+#include "input.h"
 
 char retro_system_directory[4096];
 char retro_game_path[4096];
-
-
 
 /* -------  LibRetro Callback refrences  ------- */
 static retro_environment_t environ_cb = NULL;
@@ -26,7 +25,7 @@ void retro_set_environment(retro_environment_t cb)
    bool retro_options_categories_supported;
    retromac_set_core_options(cb, &retro_options_categories_supported);
 
-   // Not really any point but it is possible
+   /* Not really any point but it is possible */
    bool support_no_game = true;
    environ_cb(RETRO_ENVIRONMENT_SET_SUPPORT_NO_GAME, &support_no_game);
 }
@@ -36,7 +35,7 @@ void retro_set_environment(retro_environment_t cb)
  *
  * @note Guaranteed to have been called before the first call to \c retro_run() is made.
  */
-//void retro_set_video_refresh(retro_video_refresh_t cb);
+// void retro_set_video_refresh(retro_video_refresh_t cb);
 
 /**
  * Sets the audio sample callback.
@@ -73,24 +72,23 @@ void retro_set_environment(retro_environment_t cb)
  */
 void retro_init(void)
 {
-    //frame_buf = (uint8_t*)calloc(SharedCfg_ScreenNumPixels * sizeof(uint32_t));
+   // frame_buf = (uint8_t*)calloc(SharedCfg_ScreenNumPixels * sizeof(uint32_t));
 
-    // Directories
-    const char *dir = NULL;
-    if (environ_cb(RETRO_ENVIRONMENT_GET_SYSTEM_DIRECTORY, &dir) && dir)
-    {
-        snprintf(retro_system_directory, sizeof(retro_system_directory), "%s", dir);
-    }
+   // Directories
+   const char *dir = NULL;
+   if (environ_cb(RETRO_ENVIRONMENT_GET_SYSTEM_DIRECTORY, &dir) && dir)
+   {
+      snprintf(retro_system_directory, sizeof(retro_system_directory), "%s", dir);
+   }
 
-    //Keyboard CB
+   retromac_keyboard_init(environ_cb);
 
-    /* Disc interface */
-   dc = dc_create();
-   unsigned dci_version = 0;
-   if (environ_cb(RETRO_ENVIRONMENT_GET_DISK_CONTROL_INTERFACE_VERSION, &dci_version) && (dci_version >= 1))
-      environ_cb(RETRO_ENVIRONMENT_SET_DISK_CONTROL_EXT_INTERFACE, &disk_interface_ext);
-   else
-      environ_cb(RETRO_ENVIRONMENT_SET_DISK_CONTROL_INTERFACE, &disk_interface);
+   /*
+    * Adding and removing of disk images will not be supported as it is
+    * not necessary with MacOS (all inserted disks will be supported)
+    * Note: If the OS ejects a disk then it cannot be re-inserted
+   */
+   // retromac_disk_init(environ_cb);
 }
 
 /**
@@ -110,7 +108,7 @@ void retro_deinit(void)
  */
 unsigned retro_api_version(void)
 {
-    return RETRO_API_VERSION;
+   return RETRO_API_VERSION;
 }
 
 /**
@@ -299,7 +297,7 @@ void retro_cheat_set(unsigned index, bool enabled, const char *code)
  */
 unsigned retro_get_region(void)
 {
-    return RETRO_REGION_NTSC;
+   return RETRO_REGION_NTSC;
 }
 
 /**

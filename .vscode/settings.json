@@ -1,6 +1,21 @@
 {
     "files.associations": {
         "*.yml": "yaml",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "osgcomud.h": "c",
+        "osgcomui.h": "c",
+        "dylib.h": "c",
+        "stddef.h": "c",
+        "stdbool.h": "c",
+        "wrapper.h": "c",
+        "comosglu.h": "c",
+        "osglue_keyboard.h": "c",
+        "cnfuiall.h": "c",
+        "dfcnfcmp.h": "c",
+        "osgluaaa.h": "c",
+        "cnfuiosg.h": "c",
+        "endianac.h": "c",
+        "strconst.h": "c",
+        "strcneng.h": "c"
     }
 }
