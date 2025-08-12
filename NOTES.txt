@@ -1,0 +1,45 @@
+Swap Win(⊞)  and Control - ⌘-Q becomes Ctrl-Q --
+
+
+Windows Key: Acts as the Command (⌘) key on Mac.
+Control Key: Remains as the Control (⌃) key on Mac.
+Alt Key: Acts as the Option (⌥) key on Mac.
+Shift Key: Remains as the Shift key on both keyboards.
+
+Retropad
+Both joysticks control Mouse (left click / right is turbo click ??? )
+Joysticks + Dpad control mouse
+Right joy
+Left joy
+Dpad control mouse
+Left trigger click / Right trigger click / X / A
+
+
+Pause in background\
+
+
+Crasy Crystal
+-- Mouse, click fire, space bar bomb
+
+
+
+Quit
+
+
+
+Limited Keyboard
+Escape
+q w e a s d c v m
+Space
+
+Shift
+Ctrl
+Space
+Command
+Option
+
+Left, Right, Up Down
+
+Numpad 0-9
+Tab
+
