@@ -3,6 +3,9 @@
 #include "input.h"
 #include "minivmac/osglue_keyboard.h"
 
+retro_input_poll_t retro_input_poll_cb = NULL;
+retro_input_state_t retro_input_state_cb = NULL;
+
 // Faster than allocating and freeing membory
 static char automatic_desc[128];
 

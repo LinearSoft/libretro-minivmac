@@ -1,8 +1,9 @@
 #include <libretro.h>
 
+#include "input.h"
 #include "logging.h"
 #include "options.h"
-#include "input.h"
+#include "sysconfig.h"
 
 char retro_system_directory[4096];
 char retro_game_path[4096];
@@ -56,14 +57,20 @@ void retro_set_environment(retro_environment_t cb)
  *
  * @note Guaranteed to have been called before the first call to \c retro_run() is made.
  */
-// void retro_set_input_poll(retro_input_poll_t cb);
+void retro_set_input_poll(retro_input_poll_t cb)
+{
+   retro_input_poll_cb = cb;
+}
 
 /**
  * Sets the input state callback.
  *
  *@note Guaranteed to have been called before the first call to \c retro_run() is made.
  */
-// void retro_set_input_state(retro_input_state_t cb);
+void retro_set_input_state(retro_input_state_t cb)
+{
+   retro_input_state_cb = cb;
+}
 
 /**
  * Called by the frontend when initializing a libretro core.
@@ -88,7 +95,7 @@ void retro_init(void)
     * not necessary with MacOS (all inserted disks will be supported)
     * Note: If the OS ejects a disk then it cannot be re-inserted
    */
-   // retromac_disk_init(environ_cb);
+
 }
 
 /**
@@ -116,7 +123,15 @@ unsigned retro_api_version(void)
  *
  * @note Can be called at any time, even before retro_init().
  */
-// void retro_get_system_info(struct retro_system_info *info);
+void retro_get_system_info(struct retro_system_info *info)
+{
+   memset(info, 0, sizeof(*info));
+   info->library_name      = CORE_NAME;
+   info->library_version   = CORE_VERSION;
+   info->valid_extensions  = "dsk|img|toast|hvf";
+   info->need_fullpath     = true;
+   info->block_extract     = false;
+}
 
 /**
  * Gets information about system audio/video timings and geometry.

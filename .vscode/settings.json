@@ -16,6 +16,7 @@
         "cnfuiosg.h": "c",
         "endianac.h": "c",
         "strconst.h": "c",
-        "strcneng.h": "c"
+        "strcneng.h": "c",
+        "logging.h": "c"
     }
 }

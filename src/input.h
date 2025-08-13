@@ -21,10 +21,8 @@ void retromac_mapper_init(retro_environment_t cb);
 void retromac_keyboard_init(retro_environment_t cb);
 
 
-
-
-
-
+extern retro_input_poll_t retro_input_poll_cb;
+extern retro_input_state_t retro_input_state_cb;
 
 
 
